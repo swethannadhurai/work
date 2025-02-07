@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <style>
+       input:focus {
+        background-color:green;
+     }
+     button:active{
+          color: red;
+     }
+     h1,h3{
+        text-align: center;
+     }
+    button:hover{
+        color:darkorange;
+    }
+    .form-container {
+    width: 900px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    
+}
+body{
+    background-image: url("../image.jpg");
+    background-size: cover;
+    background-position: center;
+  background-repeat: no-repeat;
+}
+
+    </style>
+</head>
+<body>
+    <h1>COLLEGE ADMISSION FORM</h1>
+    <h3>Enter your admission information below</h3>
+    <form>
+ <div class="form-container">
+    <h4>Name</h4>
+    <label for="Firstname">FirstName:</label>
+    <input id="Firstname" type="text" placeholder="Enter your name" required/>
+
+    <label for="Middlename">MiddleName:</label>
+    <input id="Middname" type="text" placeholder="Enter your name"/>
+
+    <label for="Lastname">LastName:</label>
+    <input id="Lastname" type="text" placeholder="Enter your name" required/>
+ 
+    
+    <h4>Date of Birth</h4>
+    <label for="date">Date:</label>
+    <input id="date" type="text" placeholder="DD" minlength="1" maxlength="31" required>
+    <label for="month">Month:</label>
+    <select id="month" type="text" required>
+    <option value="">--Select Month--</option>
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">Augest</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+    </select>
+    <label for="year">Year:</label>
+    <input id="year" type="text" placeholder="YYYY" required>
+   
+    <h4>Gender</h4>
+    <label for="male">Male</label>
+    <input id="male" type="radio" name="gender" value="male" >
+    <label for="female">Female</label>
+    <input id="female" type="radio" name="gender" value="female" >
+    <label for="other">Other</label>
+    <input id="other" type="radio" name="gender" value="other" >
+  
+    <h4>Phone Number</h4>
+    <label for="phone number">Phone Number:</label>
+    <input id="phone number" type="text" placeholder="(000) 000-0000" required/>
+    <label for="email">E-mail Address:</label>
+    <input id="email" type="text" placeholder="ex:myname@gmail.com" required/>
+   
+    <h4>Mailing address</h4>
+    <label for="address">Address Line 1:</label>
+    <input id="address" type="text">
+    <label for="city">City:</label>
+    <input id="city" type="text">
+    <label for="state">State/Province:</label>
+    <input id="state" type="text">
+    <label for="pincode">Postal/Zipcode:</label>
+    <input id="pincode" type="text">
+    <br/>
+    <br/>
+    <label for="address">Address Line 2:</label>
+    <input id="address" type="text">
+   
+    <label for="city">City:</label>
+    <input id="city" type="text">
+    <label for="state">State/Province:</label>
+    <input id="state" type="text">
+    <label for="pincode">Postal/Zipcode:</label>
+    <input id="pincode" type="text">
+   
+    <h4>Preferences</h4>
+   <p>Do you speak any language other than English?</p>
+   <label for="yes">Yes</label>
+    <input id="yes" type="radio" name="yes/no" value="yes">
+    <label for="no">No</label>
+    <input id="no" type="radio" name="yes/no" value="no">
+
+   
+   <br/>
+   <br/>
+   <label for="course"> Select Course:</label>   
+    <select id="course" type="text" required>  
+    <option value="Course">--Course--</option>  
+    <option value="BCA">BCA</option>  
+    <option value="BBA">BBA</option>  
+    <option value="B.Tech">B.Tech</option>  
+    <option value="MBA">MBA</option>  
+    <option value="MCA">MCA</option>  
+    <option value="M.Tech">M.Tech</option> 
+    </select>  
+      
+   <br/>
+   <br/>
+   <button type="onclick">Submit</button>
+</form>
+</div>   
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+header {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap:7px;
+}
+.signup{
+    background-color:#FA7436;
+    width: 90px;
+    height: 40px;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border:none;
+}
+.login{
+    background-color: #FFFFFF;
+    color: #FA7436;
+    border:none;
+}
+nav{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.btn{
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #555;
+    margin: 30px 0;
+}
+
+.hero-image {
+    position: relative;
+    max-width: 55%;
+    text-align: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 450px;
+}
+
+.btn1 {
+    width: 178px;
+    height: 60px;
+    background-color: transparent;
+    color: #FF6B00;
+    font-size: 18px;
+    border: 2px solid #FF6B00;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
+.hero-image {
+    position: relative;
+    margin-left: 50px;
+}
+
+.hero-image img {
+    width: 400px;
+    border-radius: 10px;
+}
+.badge {
+    position: absolute;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.badge1 {
+    top: 90px;
+    left: -70px;
+}
+
+.badge2 {
+    bottom: 100px;
+    left: -30px;
+}
+
+.badge3 {
+    bottom: 200px;
+    right: 30px;
+}
+
+.booking-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.booking-container {
+    display: flex;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    gap: 30px;
+    width: 850px;
+}
+
+.booking-option {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    position: relative;
+}
+
+.option-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.dropdown-icon {
+    font-size: 10px;
+    color: black;
+    cursor: pointer;
+}
+
+.option-text {
+    font-size: 10px;
+    color: #666666;
+    margin-top: 5px;
+}
+
+.explore-btn {
+    width: 178px;
+    height: 60px;
+    background-color: #ff6b00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+.features {
+    text-align: center;
+    padding: 50px 20px;
+    max-width: 1200px;
+}
+
+.features h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+.features span {
+    color: #ff6b00;
+}
+
+.features p {
+    color: #555;
+    margin: 10px 0 40px;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.feature-card img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #777;
+}
+ 
+
+
+.container {
+    text-align: center;
+}
+.title {
+    font-size: 2em;
+    font-weight: bold;
+}
+.highlight {
+    color: #ff6600;
+}
+.description {
+    margin: 10px 0 20px;
+    font-size: 1.2em;
+    color: #666;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.card img {
+    width: 770px;
+    border-radius: 10px;
+}
