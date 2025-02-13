@@ -1,0 +1,33 @@
+body{
+    display: grid;
+    grid-template-columns: 1fr 3fr; 
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-areas: 
+    "header header"
+    "main  aside"
+    "footer footer";
+    gap: 5px;
+}
+
+
+
+body > * {
+      border: 5px solid blue;
+}
+
+header{
+   grid-area: header;
+}
+aside{
+    grid-area: aside;
+}
+main{
+    grid-area: main;
+    display: flex;
+    justify-content: center; /*if u want the content to be center */
+    align-items: center;
+}
+
+footer{
+    grid-area: footer;
+}
