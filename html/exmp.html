@@ -1,54 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    #restart-btn {
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .card {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* Ensures proper square shape */
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      cursor: pointer;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      pointer-events: none; /* Ensures clicks register on the .card */
+    }
+
+    .card-front {
+      background-color: #fff;
+      border: 2px solid #ccc;
+      transform: rotateY(180deg);
+    }
+
+    .card-back {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      #restart-btn {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-r from-blue-900 to-purple-600 text-white">
-    <section class="relative min-h-screen flex flex-col justify-center items-center px-6">
-        <!-- Ellipse Background -->
-        <div class="absolute top-1/2 transform -translate-y-1/2 right-20">
-            <img src="Ellipse 8324 (1).png" alt="Glow Effect" class="w-[500px] opacity-70">
+<body>
+  <h1>Memory Game</h1>
+  <button id="restart-btn">Restart Game</button>
+  <div class="game-board" id="game-board"></div>
+
+  <script>
+   const symbols = ['🐶', '🐱', '🐭', '🐰', '🦊', '🐻', '🐼', '🐸'] ;  
+    let flippedCards = [];
+    let matchedPairs = 0;
+
+    const gameBoard = document.getElementById('game-board');
+    const restartBtn = document.getElementById('restart-btn');
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function createCard(symbol) {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">${symbol}</div>
+          <div class="card-back">❓</div>
         </div>
+      `;
 
-        <!-- Hero Content -->
-        <div class="max-w-4xl text-left">
-            <p class="uppercase tracking-widest text-gray-300 text-sm">Successful Coaches are Visionaries</p>
-            <h1 class="text-5xl font-bold mt-2">
-                Good <span class="text-blue-300">coaching</span> is good <br> teaching & nothing else.
-            </h1>
-            <p class="text-gray-200 mt-4 max-w-2xl">
-                In a coaching role, you ask the questions and rely more on your staff, who become the experts, to provide the information.
-            </p>
+      card.addEventListener('click', () => {
+        if (!card.classList.contains('flipped') && flippedCards.length < 2) {
+          flipCard(card, symbol);
+        }
+      });
 
-            <!-- CTA Buttons -->
-            <div class="mt-6 space-x-4">
-                <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
-                    View Courses
-                </button>
-                <button class="border border-white px-6 py-2 rounded-lg hover:bg-white hover:text-blue-600">
-                    Get Free Consultation
-                </button>
-            </div>
+      return card;
+    }
 
-            <!-- Search Bar -->
-            <div class="mt-6 flex">
-                <input type="text" placeholder="What do you want to learn today?" 
-                       class="p-3 rounded-l-lg text-gray-800 w-96">
-                <button class="bg-blue-500 p-3 rounded-r-lg hover:bg-blue-600">Search</button>
-            </div>
-        </div>
+    function setupBoard() {
+      gameBoard.innerHTML = '';
+      const doubledSymbols = shuffle([...symbols, ...symbols]);
+      doubledSymbols.forEach(symbol => {
+        const card = createCard(symbol);
+        gameBoard.appendChild(card);
+      });
+      matchedPairs = 0;
+      flippedCards = [];
+    }
 
-        <!-- Hero Image -->
-        <div class="absolute top-1/2 transform -translate-y-1/2 right-20">
-            <img src="./" alt="Hero Image" class="w-[400px]">
-        </div>
-    </section>
+    function flipCard(card, symbol) {
+      card.classList.add('flipped');
+      flippedCards.push({ card, symbol });
+
+      if (flippedCards.length === 2) {
+        checkMatch();
+      }
+    }
+
+    function checkMatch() {
+      const [first, second] = flippedCards;
+
+      if (first.symbol === second.symbol) {
+        matchedPairs++;
+        flippedCards = [];
+
+        if (matchedPairs === symbols.length) {
+          setTimeout(() => alert('🎉 Congratulations! You found all pairs!'), 500);
+        }
+      } else {
+        setTimeout(() => {
+          first.card.classList.remove('flipped');
+          second.card.classList.remove('flipped');
+          flippedCards = [];
+        }, 1000);
+      }
+    }
+
+    function restartGame() {
+      setupBoard();
+    }
+
+    restartBtn.addEventListener('click', restartGame);
+    window.addEventListener('load', setupBoard);
+  </script>
 </body>
 </html>
-
-      
