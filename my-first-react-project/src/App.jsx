@@ -1,33 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useReducer} from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const reducer = (state, action) =>{
+
+  if(action.type == 'INCR'){
+    return state + 1;
+  }
+  else if(action.type == 'DECR'){
+    return state - 1;
+  }
+
+  else if(action.type == 'reset'){
+    return 0;
+  }
+  return state;
+}
+
+const App = () => {
+  
+  const [count, dispatch] = useReducer(reducer, 0);
+
+  const handleDecrease = () =>{
+    dispatch({type:'DECR'});
+  }
+
+  const reset = () => {
+    dispatch({type:'reset'});
+  }
+
+  const handleIncrease= () =>{
+    dispatch({type:'INCR'});
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <h1>Counter:{count}</h1>
+    <button onClick={handleIncrease}>Increase</button>
+    <br/> <br/>
+    <button onClick={handleDecrease}>Decrease</button>
+    <br/> <br/>
+    <button onClick={reset}>Reset</button>
     </>
   )
 }
